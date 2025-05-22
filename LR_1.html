@@ -1,66 +1,50 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <title>Домашнє завдання - Практична 1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 30px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 10px;
-            cursor: pointer;
-        }
-        h1 {
-            color: red;
-            font-size: 4em;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>LR_1</title>
 </head>
 <body>
+  <p>Сторінка привітання</p>
+  <p>"Hello WORLD"</p>
 
-<h2>Натисніть кнопку для привітання:</h2>
+  <!-- Кнопка для привітання -->
+  <button id="greetBtn">Привіт СВІТ</button>
 
-<!-- Кнопки -->
-<button id="btnGreet">Привітати СВІТ</button>
-<button id="btnReset" style="display: none;">Скинути</button>
+  <!-- Кнопка для скидання -->
+  <button id="resetBtn" style="display: none;">Скинути</button>
 
-<!-- JavaScript -->
-<script>
-    // Обробка натискання на кнопку "Привітати СВІТ"
-    document.getElementById("btnGreet").onclick = function() {
-        // Створення нового заголовка
-        var h1 = document.createElement('h1');
-        h1.id = "greeting";
-        h1.textContent = "Я ВІТАЮ ТЕБЕ СВІТ!!!";
+  <script>
+    "use strict";
 
-        // Додавання на сторінку
-        document.body.appendChild(h1);
+    const greetBtn = document.getElementById("greetBtn");
+    const resetBtn = document.getElementById("resetBtn");
 
-        // Приховуємо кнопку привітання, показуємо кнопку скидання
-        this.style.display = "none";
-        document.getElementById("btnReset").style.display = "inline";
+    greetBtn.onclick = function () {
+      // Створення заголовка
+      const h1 = document.createElement("h1");
+      h1.id = "greeting";
+      h1.textContent = "Я ВІТАЮ ТЕБЕ СВІТ!!!";
+      h1.style.color = "red";
+      h1.style.fontSize = "4em";
+      h1.style.textAlign = "center";
+      document.body.appendChild(h1);
+
+      // Кнопки перемикаються
+      greetBtn.style.display = "none";
+      resetBtn.style.display = "inline";
     };
 
-    // Обробка натискання на кнопку "Скинути"
-    document.getElementById("btnReset").onclick = function() {
-        var h1 = document.getElementById("greeting");
-        if (h1) {
-            h1.remove(); // Видалити елемент <h1>
-        }
+    resetBtn.onclick = function () {
+      const h1 = document.getElementById("greeting");
+      if (h1) {
+        h1.remove(); // видаляємо заголовок
+      }
 
-        // Відновлюємо початковий стан кнопок
-        this.style.display = "none";
-        document.getElementById("btnGreet").style.display = "inline";
+      // Відновлюємо стан
+      greetBtn.style.display = "inline";
+      resetBtn.style.display = "none";
     };
-</script>
-
+  </script>
 </body>
 </html>

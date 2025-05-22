@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>Домашнє завдання - Практична 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        h1 {
+            color: red;
+            font-size: 4em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Натисніть кнопку для привітання:</h2>
+
+<!-- Кнопки -->
+<button id="btnGreet">Привітати СВІТ</button>
+<button id="btnReset" style="display: none;">Скинути</button>
+
+<!-- JavaScript -->
+<script>
+    // Обробка натискання на кнопку "Привітати СВІТ"
+    document.getElementById("btnGreet").onclick = function() {
+        // Створення нового заголовка
+        var h1 = document.createElement('h1');
+        h1.id = "greeting";
+        h1.textContent = "Я ВІТАЮ ТЕБЕ СВІТ!!!";
+
+        // Додавання на сторінку
+        document.body.appendChild(h1);
+
+        // Приховуємо кнопку привітання, показуємо кнопку скидання
+        this.style.display = "none";
+        document.getElementById("btnReset").style.display = "inline";
+    };
+
+    // Обробка натискання на кнопку "Скинути"
+    document.getElementById("btnReset").onclick = function() {
+        var h1 = document.getElementById("greeting");
+        if (h1) {
+            h1.remove(); // Видалити елемент <h1>
+        }
+
+        // Відновлюємо початковий стан кнопок
+        this.style.display = "none";
+        document.getElementById("btnGreet").style.display = "inline";
+    };
+</script>
+
+</body>
+</html>
